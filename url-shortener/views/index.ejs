@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Url-shortener</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <body>
+    <div class="container">
+      <form action="/addUrl" method="POST">
+        <label for="longurl"></label>
+        <input type="text" class="form-control" name="fullUrl" id="fullUrl" placeholder="URL...">
+        <button type="submit" class="btn btn-primary my-3">Submit</button>
+      </form>
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Full</th>
+            <th scope="col">Short</th>
+            <th scope="col">Clicks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% shortUrls.forEach(shortUrl => { %>
+            <tr>
+              <td><a href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
+              <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
+              <td><%= shortUrl.clicks %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
